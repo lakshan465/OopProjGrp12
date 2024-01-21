@@ -48,12 +48,13 @@ public class FXMLDocumentController implements Initializable {
     private TextField unameTxt;
 
     private Connection connect;
-    private PreparedStatement prepare;
-    private ResultSet result;
+    private PreparedStatement adminPrepare,staffPrepare;
+    private ResultSet adminResult, staffResult;
     private int result2;
 
     public void adminLogin() {
-        String sql = "SELECT * FROM admin WHERE username = ? and password = ?";
+        String adminsql = "SELECT * FROM admin WHERE username = ? and password = ?";
+        String staffsql = "SELECT * FROM staff WHERE username = ? and password = ?";
         connect = DbConnection.connectDb();
 
         try {
@@ -68,19 +69,25 @@ public class FXMLDocumentController implements Initializable {
                 alert.setContentText("Please fill all blank fields");
                 alert.showAndWait();
             } else {
-                prepare = connect.prepareStatement(sql);
-                prepare.setString(1, unameTxt.getText());
-                prepare.setString(2, pwdTxt.getText());
+                adminPrepare = connect.prepareStatement(adminsql);
+                adminPrepare.setString(1, unameTxt.getText());
+                adminPrepare.setString(2, pwdTxt.getText());
+                
+                staffPrepare = connect.prepareStatement(staffsql);
+                staffPrepare.setString(1, unameTxt.getText());
+                staffPrepare.setString(2, pwdTxt.getText());
 
-                result = prepare.executeQuery();
 
-                if (result.next()) {
+                adminResult = adminPrepare.executeQuery();
+                staffResult = staffPrepare.executeQuery();
+
+                if (adminResult.next()) {
 
                     //then proceed to the dashbord
                     alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Information");
                     alert.setHeaderText(null);
-                    alert.setContentText("Login successfull!");
+                    alert.setContentText("Login as a Admin was Successfull!");
                     alert.showAndWait();
 
                     //hide the login form
@@ -93,6 +100,25 @@ public class FXMLDocumentController implements Initializable {
                     stage.setScene(scene);
                     stage.show();
 
+                } else if (staffResult.next()) {
+
+                    //then proceed to the dashbord
+                    alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Information");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Login as a Staff Member was Successfull!");
+                    alert.showAndWait();
+
+                    //hide the login form
+                    loginBtn.getScene().getWindow().hide();
+
+                    //link dashBord form                    
+//                    Parent root = FXMLLoader.load(getClass().getResource("dashBord.fxml"));
+//                    Stage stage = new Stage();
+//                    Scene scene = new Scene(root);
+//                    stage.setScene(scene);
+//                    stage.show();
+
                 } else {
                     //error msg show
                     alert = new Alert(AlertType.ERROR);
@@ -100,6 +126,7 @@ public class FXMLDocumentController implements Initializable {
                     alert.setHeaderText(null);
                     alert.setContentText("Wrong username or password");
                     alert.showAndWait();
+
                 }
 
             }
@@ -108,6 +135,8 @@ public class FXMLDocumentController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    
 
     public void close() {
         System.exit(0);

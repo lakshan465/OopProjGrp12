@@ -8,16 +8,15 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
             <BorderPane layoutX="75.0" layoutY="115.0" prefHeight="600.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <top>
-                  <AnchorPane prefHeight="45.0" prefWidth="1100.0" BorderPane.alignment="CENTER">
+                  <AnchorPane prefHeight="45.0" prefWidth="1100.0" styleClass="semi-top-form" stylesheets="@dashBordDesign.css" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane layoutX="104.0" layoutY="-77.0" prefHeight="35.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane layoutX="104.0" layoutY="-77.0" prefHeight="35.0" prefWidth="1100.0" styleClass="top-form" stylesheets="@dashBordDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <FontAwesomeIconView glyphName="PAW" layoutX="21.0" layoutY="33.0" size="30" />
                               <Label layoutX="62.0" layoutY="11.0" text="Zoo Management System">
@@ -25,12 +24,12 @@
                                     <Font name="Marker Felt Thin" size="16.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="1031.0" layoutY="10.0" mnemonicParsing="false" prefWidth="55.0">
+                              <Button layoutX="1031.0" layoutY="10.0" mnemonicParsing="false" prefWidth="55.0" styleClass="close" stylesheets="@dashBordDesign.css">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="CLOSE" />
                                  </graphic>
                               </Button>
-                              <Button layoutX="965.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="55.0">
+                              <Button layoutX="965.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="55.0" styleClass="close" stylesheets="@dashBordDesign.css">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="MINUS" text="" />
                                  </graphic>
